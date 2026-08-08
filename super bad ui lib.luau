@@ -1,4 +1,3 @@
--- Pixel / Arcade UI Library (Rayfield Style)
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
 local Players = game:GetService("Players")
@@ -49,7 +48,6 @@ function Library:CreateWindow(WindowConfig)
 	WindowConfig = WindowConfig or {}
 	local TitleText = WindowConfig.Name or "SCRIPT NAME"
 
-	-- Destroy existing UI if present
 	local parent = GetGuiParent()
 	if parent:FindFirstChild("PixelUILibrary") then
 		parent:FindFirstChild("PixelUILibrary"):Destroy()
@@ -68,7 +66,6 @@ function Library:CreateWindow(WindowConfig)
 	mainFrame.BorderSizePixel = 0
 	mainFrame.Parent = screenGui
 
-	-- Header
 	local headerFrame = Instance.new("Frame")
 	headerFrame.Name = "HeaderFrame"
 	headerFrame.Size = UDim2.new(1, 0, 0, 45)
@@ -107,7 +104,6 @@ function Library:CreateWindow(WindowConfig)
 	titleLabel.TextXAlignment = Enum.TextXAlignment.Right
 	titleLabel.Parent = headerFrame
 
-	-- Top Horizontal Separator
 	local topSeparator = Instance.new("Frame")
 	topSeparator.Name = "TopSeparator"
 	topSeparator.Size = UDim2.new(1, -20, 0, 2)
@@ -116,7 +112,6 @@ function Library:CreateWindow(WindowConfig)
 	topSeparator.BorderSizePixel = 0
 	topSeparator.Parent = mainFrame
 
-	-- Content Area
 	local contentContainer = Instance.new("Frame")
 	contentContainer.Name = "ContentContainer"
 	contentContainer.Size = UDim2.new(1, -20, 1, -57)
@@ -213,7 +208,6 @@ function Library:CreateWindow(WindowConfig)
 			subTabFrame.Visible = false
 			subTabFrame.Parent = bodyFrame
 
-			-- Middle Vertical Separator
 			local verticalSeparator = Instance.new("Frame")
 			verticalSeparator.Name = "VerticalSeparator"
 			verticalSeparator.Size = UDim2.new(0, 2, 1, 0)
@@ -222,7 +216,6 @@ function Library:CreateWindow(WindowConfig)
 			verticalSeparator.BorderSizePixel = 0
 			verticalSeparator.Parent = subTabFrame
 
-			-- Left Column Box
 			local leftBox = Instance.new("Frame")
 			leftBox.Name = "LeftBox"
 			leftBox.Size = UDim2.new(0.5, -6, 1, 0)
@@ -251,7 +244,6 @@ function Library:CreateWindow(WindowConfig)
 				leftScroll.CanvasSize = UDim2.new(0, 0, 0, leftLayout.AbsoluteContentSize.Y + 10)
 			end)
 
-			-- Right Column Box
 			local rightBox = Instance.new("Frame")
 			rightBox.Name = "RightBox"
 			rightBox.Size = UDim2.new(0.5, -6, 1, 0)
@@ -305,8 +297,6 @@ function Library:CreateWindow(WindowConfig)
 				end
 				return leftScroll
 			end
-
-			-- Rayfield Style Element Methods
 
 			function subTab:CreateButton(Config)
 				Config = Config or {}
@@ -589,4 +579,90 @@ function Library:CreateWindow(WindowConfig)
 	return Window
 end
 
-return Library
+-- Window Initialization
+local Window = Library:CreateWindow({
+	Name = "SCRIPT NAME"
+})
+
+local MainTab = Window:CreateTab("TAB NAME")
+local SubTab = MainTab:CreateSubTab("SUBTAB NAME")
+
+-- Left Column Setup
+local Toggle1 = SubTab:CreateToggle({
+	Name = "TOGGLE NAME",
+	CurrentValue = false,
+	Side = "Left",
+	Flag = "Toggle1Flag",
+	Callback = function(Value)
+		print("Toggle 1 set to:", Value)
+	end,
+})
+
+local Toggle2 = SubTab:CreateToggle({
+	Name = "TOGGLE NAME",
+	CurrentValue = true,
+	Side = "Left",
+	Flag = "Toggle2Flag",
+	Callback = function(Value)
+		print("Toggle 2 set to:", Value)
+	end,
+})
+
+local Button1 = SubTab:CreateButton({
+	Name = "BUTTON NAME",
+	Side = "Left",
+	Callback = function()
+		print("Left Button clicked!")
+	end,
+})
+
+local Dropdown1 = SubTab:CreateDropdown({
+	Name = "DROPDOWN NAME",
+	Options = {"OPTION", "OPTION", "OPTION", "OPTION", "OPTION"},
+	CurrentOption = "OPTION",
+	Side = "Left",
+	Flag = "Dropdown1Flag",
+	Callback = function(Option)
+		print("Left Dropdown selected:", Option)
+	end,
+})
+
+-- Right Column Setup
+local Toggle3 = SubTab:CreateToggle({
+	Name = "TOGGLE NAME",
+	CurrentValue = false,
+	Side = "Right",
+	Flag = "Toggle3Flag",
+	Callback = function(Value)
+		print("Right Toggle 1 set to:", Value)
+	end,
+})
+
+local Toggle4 = SubTab:CreateToggle({
+	Name = "TOGGLE NAME",
+	CurrentValue = true,
+	Side = "Right",
+	Flag = "Toggle4Flag",
+	Callback = function(Value)
+		print("Right Toggle 2 set to:", Value)
+	end,
+})
+
+local Button2 = SubTab:CreateButton({
+	Name = "BUTTON NAME",
+	Side = "Right",
+	Callback = function()
+		print("Right Button clicked!")
+	end,
+})
+
+local Dropdown2 = SubTab:CreateDropdown({
+	Name = "DROPDOWN NAME",
+	Options = {"OPTION", "OPTION", "OPTION", "OPTION", "OPTION"},
+	CurrentOption = "OPTION",
+	Side = "Right",
+	Flag = "Dropdown2Flag",
+	Callback = function(Option)
+		print("Right Dropdown selected:", Option)
+	end,
+})
