@@ -579,7 +579,6 @@ function Library:CreateWindow(WindowConfig)
 	return Window
 end
 
--- Window Initialization
 local Window = Library:CreateWindow({
 	Name = "SCRIPT NAME"
 })
@@ -587,8 +586,7 @@ local Window = Library:CreateWindow({
 local MainTab = Window:CreateTab("TAB NAME")
 local SubTab = MainTab:CreateSubTab("SUBTAB NAME")
 
--- Left Column Setup
-local Toggle1 = SubTab:CreateToggle({
+SubTab:CreateToggle({
 	Name = "TOGGLE NAME",
 	CurrentValue = false,
 	Side = "Left",
@@ -598,7 +596,7 @@ local Toggle1 = SubTab:CreateToggle({
 	end,
 })
 
-local Toggle2 = SubTab:CreateToggle({
+SubTab:CreateToggle({
 	Name = "TOGGLE NAME",
 	CurrentValue = true,
 	Side = "Left",
@@ -608,7 +606,7 @@ local Toggle2 = SubTab:CreateToggle({
 	end,
 })
 
-local Button1 = SubTab:CreateButton({
+SubTab:CreateButton({
 	Name = "BUTTON NAME",
 	Side = "Left",
 	Callback = function()
@@ -616,7 +614,7 @@ local Button1 = SubTab:CreateButton({
 	end,
 })
 
-local Dropdown1 = SubTab:CreateDropdown({
+SubTab:CreateDropdown({
 	Name = "DROPDOWN NAME",
 	Options = {"OPTION", "OPTION", "OPTION", "OPTION", "OPTION"},
 	CurrentOption = "OPTION",
@@ -627,8 +625,7 @@ local Dropdown1 = SubTab:CreateDropdown({
 	end,
 })
 
--- Right Column Setup
-local Toggle3 = SubTab:CreateToggle({
+SubTab:CreateToggle({
 	Name = "TOGGLE NAME",
 	CurrentValue = false,
 	Side = "Right",
@@ -638,7 +635,7 @@ local Toggle3 = SubTab:CreateToggle({
 	end,
 })
 
-local Toggle4 = SubTab:CreateToggle({
+SubTab:CreateToggle({
 	Name = "TOGGLE NAME",
 	CurrentValue = true,
 	Side = "Right",
@@ -648,7 +645,7 @@ local Toggle4 = SubTab:CreateToggle({
 	end,
 })
 
-local Button2 = SubTab:CreateButton({
+SubTab:CreateButton({
 	Name = "BUTTON NAME",
 	Side = "Right",
 	Callback = function()
@@ -656,7 +653,7 @@ local Button2 = SubTab:CreateButton({
 	end,
 })
 
-local Dropdown2 = SubTab:CreateDropdown({
+SubTab:CreateDropdown({
 	Name = "DROPDOWN NAME",
 	Options = {"OPTION", "OPTION", "OPTION", "OPTION", "OPTION"},
 	CurrentOption = "OPTION",
